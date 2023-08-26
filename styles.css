@@ -1,0 +1,241 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+	font-size: max(12px, 1.9vw);
+	font-weight: 400;
+	font-feature-settings: 'liga';
+}
+
+html{scroll-padding-top: 33vh;}
+
+:root{
+	--bg-gray: #f1f7f9;
+	/* --bg-gray: #f3f3f4; gray */
+	/* --bg-gray: #f1efec; brownish */
+	--highlight: #ec0951;
+
+	--width-prose: 65ch;
+	--width-poetry: 55ch;
+	--width-longline: 70ch;
+}
+
+body {
+	background-color: #ffffff;
+	/* overflow-x:hidden; */
+	display: flex;
+	flex-direction: column;
+}
+
+
+/* ---------------------------- PARSING --------------------------------------------------------- */
+aside {
+	position: sticky; top: 30px; left: 0;
+	width: 100%;
+	z-index: 5;
+	padding: 15px;
+	background-color: var(--bg-gray);
+}
+
+#info{
+	margin: 0;
+	position: relative;
+	list-style-type: none;
+}
+
+#info li, #info li span, #info li .vocab, #info li .vocab2{
+	font-size: 12px;
+	line-height: 1.2rem;
+	text-decoration: none;
+}
+
+#citation {
+	color: #ec0951;
+	font-feature-settings: "lnum", "tnum";
+	font-weight: bold;
+	padding-right: .75rem;
+	display: inline-block;
+}
+
+#entry {
+	font-weight: 700;
+}
+
+#info #pos{
+	font-feature-settings: 'c2sc', 'smcp','onum';
+	margin-top: -3px;
+	margin-bottom: 5px;
+}
+
+.vocab2{font-style: italic;}
+
+em {
+	font-style: italic;
+	font-size: inherit;
+}
+
+b {
+	color: #CA1E47;
+	font-weight: 700;
+	font-size: .75rem;
+}
+b[id] {font-size: inherit;}
+
+/*
+b[id]::before {content: '[';}
+b[id]::after {content:']'}
+*/
+
+/* ---------------------------- MAIN ---------------------------------------------------------- */
+main {
+	width: 100%;
+	margin: 0 0 100px;
+	padding: 0;
+	padding-left: 15px;
+}
+
+section {
+	width: calc(100vw - 2rem - 15px);
+	padding: 0px;
+	margin: 0;
+}
+section:first-of-type {padding-top: 30px;}
+
+h3 {
+	font-weight: 600;
+	margin-bottom: .75rem;
+	text-transform: lowercase;
+	font-feature-settings: 'smcp','onum','pnum';
+	border-bottom: 1.5px solid var(--ros-liblue);
+}
+
+
+
+[data-cite]:hover{
+	color: var(--highlight);
+	background-color: var(--hoverback);
+	border-radius: 4px;
+}
+
+main section p.para{
+	margin-top:1.5rem;
+}
+
+
+@media screen and (min-width:800px){
+	* {
+		font-family: 'EBGaramond';
+		font-size: clamp(20px, 1.8vw, 40px);
+	}
+	html{scroll-padding-top: 30vh;}
+	body, h3 {
+		margin: 0 auto;
+		width:100%;
+		background-color: var(--bg-gray);
+	}
+	aside {padding:0;margin:0 auto;top: 48px}
+
+	#info {
+		width: calc(var(--width-prose));
+		padding: 25px 0;
+		margin: 0 auto;
+	}
+	#info #pos {margin-top:-.5vw;}
+	h3{font-weight: unset;}
+
+	#info li {
+		font-size: clamp(16px, 1.5vw, 40px);
+		line-height: .9rem;
+	}
+	#info li span{font-size: clamp(20px, 1.9vw, 40px);}
+	#firstline {text-indent: -4rem;}
+	#citation {
+		color: #ec0951;
+		font-feature-settings: "lnum", "tnum";
+		width: 4rem;
+		font-size: .7rem !important;
+		font-weight: 700;
+		padding-right: .75rem;
+		text-align: right;
+	}
+	#entry {
+		font-weight: 700;
+		font-size: 1rem;
+		line-height: .9rem;
+	}
+	main {padding:0;}
+	section, h3 {
+		width: calc(var(--width-prose) + 70px);
+		padding: 35px;
+		margin: 0 auto;
+		background-color: #ffffff;
+		border-radius: 5px;
+	}
+	p {
+		line-height: 1.5rem;
+		margin:0;
+		text-indent:0;
+	}
+	b.speaker {
+		padding: 0 8px;
+		border: .07rem solid var(--highlight);
+		border-radius:3px;
+		line-height: 50%;
+		text-transform: uppercase;
+	}
+	
+	p:hover::before {
+		opacity:1;
+		color: var(--highlight);
+	}
+	
+	.textnote::before {
+		content: "â€  " attr(data-ln);
+	}
+
+	p::after {
+		content: attr(data-meter);
+		opacity: 0.2;
+		float: right;
+		text-align: right;
+		font-size: .65rem;
+		font-style: italic;
+		width:4ch;
+	}
+	
+}
+
+.commentary {
+	border-top: 1px solid #ccc; /* Adjust color and style as needed */
+    padding-top: 10px; /* Add some spacing above the line */
+    margin-top: 10px; /* Add margin to separate from other content */
+	
+}
+
+.commentary {
+    font-size: 20px; /* Adjust the size as needed */
+}
+
+.commentary-info {
+    font-size: 20px; /* Adjust the size as needed */
+}
+
+.commentary a {
+    font-size: 20px; /* Adjust the size as needed */
+}
+
+.commentary {
+    display: flex; /* Use flexbox to create columns */
+}
+
+.column {
+    flex: 1; /* Distribute available space equally among columns */
+    padding: 10px; /* Add padding for spacing between columns */
+    border: 1px solid #ccc; /* Add a border for column separation (optional) */
+    box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+.commentary-info {
+    margin: 0; /* Remove default margin from paragraph */
+}
