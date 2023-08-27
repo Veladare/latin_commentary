@@ -127,27 +127,29 @@ const tagCatalog = [
 };
 
 
+
+
+
 const doInfo = function(event) {
-	// if (event.target.tagName === 'SPAN') {
-	if (event.target.attributes.getNamedItem('data-pos')) {
-		let mousedWord = event.target;
-		
-		let wordForm = (mousedWord.textContent) ? mousedWord.textContent : `&nbsp;`;
-		let wordDict = (mousedWord.dataset.dict) ? mousedWord.dataset.dict : ' ';
-		var wordPos = (mousedWord.dataset.pos) ? doPOS(mousedWord.dataset.pos) : ' ';
-		let wordDef = (mousedWord.dataset.def) ? mousedWord.dataset.def : ' ';
-		let infoBox = 
-			`
-				<li id='firstline'>
-					<span id='citation'></span><span id='entry'>${wordForm}</span>
-				</li>
-				<li id='pos'>${wordPos}</li>
-				<li class='vocab'>${wordDict}</li>
-				<li class='vocab2'>${wordDef}</li>
-			`;
-		document.querySelector('#info').innerHTML = infoBox;
-	}
+    // if (event.target.tagName === 'SPAN') {
+    if (event.target.attributes.getNamedItem('data-pos')) {
+        let mousedWord = event.target;
+
+        let wordForm = (mousedWord.textContent) ? mousedWord.textContent : `&nbsp;`;
+        let wordDict = (mousedWord.dataset.dict) ? mousedWord.dataset.dict : ' ';
+        var wordPos = (mousedWord.dataset.pos) ? doPOS(mousedWord.dataset.pos) : ' ';
+        let wordDef = (mousedWord.dataset.def) ? mousedWord.dataset.def : ' ';
+        let infoBox = 
+            `
+			<span id='entry'>${wordForm}</span>
+            <li id='pos'>${wordPos}</li>
+            <li class='vocab'>${wordDict}</li>
+            <li class='vocab2'>${wordDef}</li>
+            `;
+        document.querySelector('#info').innerHTML = infoBox;
+    }
 };
+
 
 const doLink = function(event) {
 	if (event.target.attributes.getNamedItem('data-pos')) {
