@@ -136,7 +136,7 @@ const doInfo = function(event) {
 
         let wordForm = (mousedWord.textContent) ? mousedWord.textContent : `&nbsp;`;
         let wordDict = (mousedWord.dataset.dict) ? mousedWord.dataset.dict : ' ';
-        var wordPos = (mousedWord.dataset.pos) ? doPOS(mousedWord.dataset.pos) : ' ';
+        let wordPos = (mousedWord.dataset.pos) ? doPOS(mousedWord.dataset.pos) : ' ';
         let wordDef = (mousedWord.dataset.def) ? mousedWord.dataset.def : ' ';
 
         // Clear the existing content of the #info element

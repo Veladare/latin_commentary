@@ -198,6 +198,9 @@ main section p.para{
 	border-top: 1px solid #ccc; /* Adjust color and style as needed */
     padding-top: 10px; /* Add some spacing above the line */
     margin-top: 10px; /* Add margin to separate from other content */
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px; /* Add some spacing above the line */
+    margin-bottom: 10px; /* Add margin to separate from other content */
 	
 }
 
