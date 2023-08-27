@@ -233,3 +233,11 @@ main section p.para{
     margin: 0; /* Remove default margin from paragraph */
 }
 
+aside {
+	position: sticky; top: 0px; left: 0;
+	width: 100%;
+	z-index: 5;
+	padding: 15px;
+	background-color: var(--bg-gray);
+}
+
