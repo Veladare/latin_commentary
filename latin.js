@@ -131,7 +131,6 @@ const tagCatalog = [
 
 
 const doInfo = function(event) {
-    // if (event.target.tagName === 'SPAN') {
     if (event.target.attributes.getNamedItem('data-pos')) {
         let mousedWord = event.target;
 
@@ -139,14 +138,39 @@ const doInfo = function(event) {
         let wordDict = (mousedWord.dataset.dict) ? mousedWord.dataset.dict : ' ';
         var wordPos = (mousedWord.dataset.pos) ? doPOS(mousedWord.dataset.pos) : ' ';
         let wordDef = (mousedWord.dataset.def) ? mousedWord.dataset.def : ' ';
-        let infoBox = 
-            `
-			<span id='entry'>${wordForm}</span>
-            <li id='pos'>${wordPos}</li>
-            <li class='vocab'>${wordDict}</li>
-            <li class='vocab2'>${wordDef}</li>
-            `;
-        document.querySelector('#info').innerHTML = infoBox;
+
+        // Clear the existing content of the #info element
+        const infoElement = document.querySelector('#info');
+        infoElement.textContent = '';
+
+        // Create text nodes for each part of the infoBox
+        const entryText = document.createTextNode(wordForm);
+        const posText = document.createTextNode(wordPos);
+        const vocabText = document.createTextNode(wordDict);
+        const vocab2Text = document.createTextNode(wordDef);
+
+        // Create and append list elements
+        const entrySpan = document.createElement('span');
+        entrySpan.id = 'entry';
+        entrySpan.appendChild(entryText);
+
+        const posLi = document.createElement('li');
+        posLi.id = 'pos';
+        posLi.appendChild(posText);
+
+        const vocabLi = document.createElement('li');
+        vocabLi.className = 'vocab';
+        vocabLi.appendChild(vocabText);
+
+        const vocab2Li = document.createElement('li');
+        vocab2Li.className = 'vocab2';
+        vocab2Li.appendChild(vocab2Text);
+
+        // Append the elements to the #info element
+        infoElement.appendChild(entrySpan);
+        infoElement.appendChild(posLi);
+        infoElement.appendChild(vocabLi);
+        infoElement.appendChild(vocab2Li);
     }
 };
 
