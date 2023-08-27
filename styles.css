@@ -30,13 +30,6 @@ body {
 
 
 /* ---------------------------- PARSING --------------------------------------------------------- */
-aside {
-	position: sticky; top: 30px; left: 0;
-	width: 100%;
-	z-index: 5;
-	padding: 15px;
-	background-color: var(--bg-gray);
-}
 
 #info{
 	margin: 0;
@@ -239,3 +232,4 @@ main section p.para{
 .commentary-info {
     margin: 0; /* Remove default margin from paragraph */
 }
+
